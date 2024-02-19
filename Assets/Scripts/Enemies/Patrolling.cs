@@ -7,6 +7,8 @@ public class Patrolling : MonoBehaviour
     public float speed;
     public float distance;
 
+    Animator anim;
+
     private bool movingRight = true;
 
     public Transform groundDetection;
@@ -14,10 +16,15 @@ public class Patrolling : MonoBehaviour
 
     public bool chase;
 
+    private void Start()
+    {
+      anim = GetComponent<Animator>();
+    }
     private void Update()
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 2.0f, LayerMask.GetMask("Ground"));
+        anim.SetBool("Walking", true);
 
         if (groundInfo.collider == false)
         {
@@ -35,12 +42,6 @@ public class Patrolling : MonoBehaviour
             }
 
         }
-
-
-
-
-
-
 
     }
 
