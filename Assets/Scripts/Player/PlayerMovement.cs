@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
-            
+
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
@@ -43,17 +43,17 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("Falling", !IsGrounded());
         }
-        
+
         anim.SetBool("Jumping", !IsGrounded());
 
         Flip();
+
     }
 
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-        anim.SetBool("Idle", true);
-
+    
     }
 
     private void FixedUpdate()
