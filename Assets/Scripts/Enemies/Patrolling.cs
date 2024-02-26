@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Patrolling : MonoBehaviour
 {
+    public int maxHealth = 10;
+    int currentHealth;
     public float speed;
     public float distance;
+
+    public GameObject enemy;
 
     Animator anim;
 
@@ -18,6 +22,8 @@ public class Patrolling : MonoBehaviour
 
     private void Start()
     {
+        currentHealth = maxHealth;
+
       anim = GetComponent<Animator>();
     }
     private void Update()
@@ -48,5 +54,17 @@ public class Patrolling : MonoBehaviour
     public void detectPlayer()
     {
         chase = true;
+    }
+
+    public void takeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Destroy(enemy);
+            print("enemy is dead");
+        }
+
     }
 }
