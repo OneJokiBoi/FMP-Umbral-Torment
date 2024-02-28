@@ -9,8 +9,6 @@ public class Patrolling : MonoBehaviour
     public float speed;
     public float distance;
 
-    public GameObject enemy;
-
     Animator anim;
 
     private bool movingRight = true;
@@ -22,7 +20,7 @@ public class Patrolling : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        //currentHealth = maxHealth;
 
       anim = GetComponent<Animator>();
     }
@@ -56,7 +54,7 @@ public class Patrolling : MonoBehaviour
         chase = true;
     }
 
-    public void takeDamage(int damage)
+    /*public void takeDamage(int damage)
     {
         currentHealth -= damage;
 
@@ -66,5 +64,5 @@ public class Patrolling : MonoBehaviour
             print("enemy is dead");
         }
 
-    }
+    }*/
 }
