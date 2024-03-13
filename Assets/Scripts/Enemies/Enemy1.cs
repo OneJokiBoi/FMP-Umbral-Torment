@@ -11,7 +11,7 @@ public class Enemy1 : MonoBehaviour
     public float attackDistance;
     public float moveSpeed;
     public float timer;
-    
+
     [Header("Privates")]
     private RaycastHit2D hit;
     private GameObject target;
@@ -31,13 +31,48 @@ public class Enemy1 : MonoBehaviour
 
     private void Update()
     {
-       if (inRange)
-       {
+        if (inRange)
+        {
             hit = Physics2D.Raycast(LOSraycast.position, Vector2.left, rayCastLength, raycastMask);
             RayCastDebugger();
-       }
+        }
 
-       //5:32 from the video continue here!
+        if (hit.collider != null)
+        {
+            EnemyLogic();
+        }
+
+        else if (hit.collider == null)
+        {
+            inRange = false;
+        }
+
+        if (inRange == false)
+        {
+            anim.SetBool("Walking", false);
+            StopAttack();
+        }
+
+    }
+
+    void EnemyLogic()
+    {
+        distance = Vector2.Distance(transform.position, target.transform.position);
+        if (distance > attackDistance)
+        {
+            Move();
+            StopAttack();
+        }
+
+        else if (attackDistance >= distance && cooling == false)
+        {
+            Attack();
+        }
+
+        if (cooling)
+        {
+            anim.SetBool("Attack1", false);
+        }
 
     }
 
@@ -48,8 +83,25 @@ public class Enemy1 : MonoBehaviour
             target = collision.gameObject;
             inRange = true;
         }
+    }
+    private void Move()
+    {
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
+        {
+            Vector2 targetPosition = new Vector2(target.transform.position.x, transform.position.y);
+        }
+    }
+
+    void cooling()
+    {
 
     }
+
+    void Attack()
+    {
+
+    }
+
 
     private void RayCastDebugger()
     {
@@ -58,7 +110,7 @@ public class Enemy1 : MonoBehaviour
             Debug.DrawRay(LOSraycast.position, Vector2.left * rayCastLength, Color.red);
         }
 
-        if (distance < attackDistance) 
+        if (distance < attackDistance)
         {
             Debug.DrawRay(LOSraycast.position, Vector2.left * rayCastLength, Color.white);
         }
