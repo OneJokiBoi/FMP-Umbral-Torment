@@ -19,7 +19,7 @@ public class Enemy1 : MonoBehaviour
     private float distance;
     private bool attackMode;
     private bool inRange;
-    private bool cooldown;
+    private bool cooling;
     private float intTimer;
 
 
@@ -86,22 +86,31 @@ public class Enemy1 : MonoBehaviour
     }
     private void Move()
     {
+        anim.SetBool("Walking", true);
+
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
         {
             Vector2 targetPosition = new Vector2(target.transform.position.x, transform.position.y);
+
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
-    }
-
-    void cooling()
-    {
-
     }
 
     void Attack()
     {
+        timer = intTimer;
+        attackMode = true;
 
+        anim.SetBool("Walking", false);
+        anim.SetBool("Attack1", true);
     }
 
+    private void StopAttack()
+    {
+        cooling = false;
+        attackMode = false;
+        anim.SetBool("Attack1", false);
+    }
 
     private void RayCastDebugger()
     {
@@ -112,7 +121,7 @@ public class Enemy1 : MonoBehaviour
 
         if (distance < attackDistance)
         {
-            Debug.DrawRay(LOSraycast.position, Vector2.left * rayCastLength, Color.white);
+            Debug.DrawRay(LOSraycast.position, Vector2.left * rayCastLength, Color.green);
         }
     }
 

@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     Animator anim;
+    public GameObject attackPoint;
+    public float radius;
+    public LayerMask Enemy;
 
     private void Start()
     {
@@ -27,6 +30,17 @@ public class PlayerCombat : MonoBehaviour
     void Attack()
     {
         anim.SetBool("Attacking", true);
+        Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, Enemy);
+
+        foreach (Collider2D enemyGameobject in enemy)
+        {
+            Debug.Log("Hit");
+        }
+
+
+
+
+
     }
 
     void stopAttack()
