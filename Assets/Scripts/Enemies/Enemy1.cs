@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
-    [Header("Publics")]
+    /*[Header("Publics")]
     public Transform LOSraycast;
     public LayerMask raycastMask;
     public float rayCastLength;
@@ -123,6 +123,14 @@ public class Enemy1 : MonoBehaviour
         {
             Debug.DrawRay(LOSraycast.position, Vector2.left * rayCastLength, Color.green);
         }
+    }*/
+
+    private void Awake()
+    {
+      
     }
+
+
+
 
 }
