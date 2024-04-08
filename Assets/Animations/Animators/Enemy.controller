@@ -157,6 +157,28 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &-5267899536767761528
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -4157560511076074228}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1102 &-4157560511076074228
 AnimatorState:
   serializedVersion: 6
@@ -247,7 +269,7 @@ AnimatorStateMachine:
     m_Position: {x: 160, y: 70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7293214254641857604}
-    m_Position: {x: 160, y: 220, z: 0}
+    m_Position: {x: 240, y: 460, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7875999096218244755}
     m_Position: {x: 520, y: 150, z: 0}
@@ -259,9 +281,10 @@ AnimatorStateMachine:
     m_Position: {x: 620, y: 410, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4157560511076074228}
-    m_Position: {x: 655, y: 475, z: 0}
+    m_Position: {x: -50, y: -160, z: 0}
   m_ChildStateMachines: []
-  m_AnyStateTransitions: []
+  m_AnyStateTransitions:
+  - {fileID: -5267899536767761528}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
@@ -284,13 +307,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Attack1
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - m_Name: Die
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

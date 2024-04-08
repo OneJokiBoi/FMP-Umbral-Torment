@@ -123,14 +123,6 @@ public class Enemy1 : MonoBehaviour
         {
             Debug.DrawRay(LOSraycast.position, Vector2.left * rayCastLength, Color.green);
         }
-    }*/
-
-    private void Awake()
-    {
-      
-    }
-
-
-
+    } this was from a video and it didnt work*/
 
 }

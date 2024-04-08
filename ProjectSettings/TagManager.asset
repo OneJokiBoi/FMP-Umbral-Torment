@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: baqckground
+  - name: bg
     uniqueID: 2796774113
+    locked: 0
+  - name: fg
+    uniqueID: 3696180407
     locked: 0
