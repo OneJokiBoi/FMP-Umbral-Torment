@@ -10,21 +10,50 @@ public class EnemyHealth : MonoBehaviour
     Animator anim;
     GameObject player;
 
+    bool isDead = false;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        currentHealth = 10; 
-        if (currentHealth >= 0) die();
+        currentHealth = 10;
+        
     }
-
+    private void Update()
     {
-        if (collision.gameObject.name == "player");
+        if (currentHealth <= 0 && isDead == false)
+        {
+            die();
+            isDead = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+        }
+    }
+    void die()
+    {
+        anim.SetTrigger("Die");
     }
 
-    void die()
-    { 
-        anim.SetBool("Die", true );
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+
+            
+        }
+
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            currentHealth = 0;
+            print("Collide with Player");
+        }
+    }
+
+
+
 }
+   
+

@@ -1293,6 +1293,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5578077590452504203}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1445858989 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5578077591221504032, guid: 7d9afaefeddbea44db0194e1dac2c252,
+    type: 3}
+  m_PrefabInstance: {fileID: 5578077590452504203}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1793330675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,7 +1537,6 @@ GameObject:
   - component: {fileID: 2145305906}
   - component: {fileID: 2145305905}
   - component: {fileID: 2145305907}
-  - component: {fileID: 2145305908}
   - component: {fileID: 2145305909}
   m_Layer: 7
   m_Name: Enemy
@@ -1547,7 +1552,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145305901}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75b860d3556f12648876aa87fc499595, type: 3}
   m_Name: 
@@ -1556,7 +1561,7 @@ MonoBehaviour:
   speed: 2.5
   distance: 5
   groundDetection: {fileID: 800500745}
-  player: {fileID: 0}
+  player: {fileID: 1445858989}
   chase: 0
 --- !u!212 &2145305903
 SpriteRenderer:
@@ -1618,7 +1623,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145305901}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 2.37, y: 1.74, z: 0}
+  m_LocalPosition: {x: 10.34, y: 4.61, z: 0}
   m_LocalScale: {x: 2.6175, y: 2.6175, z: 2.6175}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1696,18 +1701,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2145305908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145305901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93f2b12d813bfb043a00eeabb08f5778, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2145305909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1720,6 +1713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 226f58b9f09c4404d8abec75cc57d1ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 10
 --- !u!1001 &5578077590452504203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1740,7 +1734,7 @@ PrefabInstance:
     - target: {fileID: 5578077591221504032, guid: 7d9afaefeddbea44db0194e1dac2c252,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8077463
+      value: -12.45
       objectReference: {fileID: 0}
     - target: {fileID: 5578077591221504032, guid: 7d9afaefeddbea44db0194e1dac2c252,
         type: 3}
@@ -1795,6 +1789,11 @@ PrefabInstance:
     - target: {fileID: 5578077591221504045, guid: 7d9afaefeddbea44db0194e1dac2c252,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578077591221504045, guid: 7d9afaefeddbea44db0194e1dac2c252,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
