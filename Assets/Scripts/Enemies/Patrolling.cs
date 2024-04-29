@@ -14,14 +14,20 @@ public class Patrolling : MonoBehaviour
     private bool movingRight = true;
 
     public Transform groundDetection;
+    public Transform playerDetection;
     public Transform player;
 
     public bool chase = false;
+    bool attack = false;
 
     float chaseRange = 4f;
+    float attackRange = 2f;
+    float value;
 
     Vector2 playerVector;
     Vector2 enemyVector;
+
+    Vector2 moveDir;
 
     private void Start()
     {
@@ -52,6 +58,55 @@ public class Patrolling : MonoBehaviour
 
             }
         }
+        if (chase)
+        {
+            RaycastHit2D playerInfo = Physics2D.Raycast(playerDetection.position, Vector2.right, 20.0f, LayerMask.GetMask("Player"));
+            if(playerInfo.collider != null)
+            {
+                if (playerInfo.collider.tag == "Player")
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                }
+
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+            }
+
+            //if not next to player
+            if (Vector2.Distance(playerVector, enemyVector) > attackRange)
+            {
+                transform.Translate(Vector2.right * speed * Time.deltaTime);
+                anim.SetBool("Attack1", false);
+                anim.SetBool("Attack2", false);
+                anim.SetBool("Walking", true);
+            }
+            else
+            {
+                if (!attack)
+                {
+                    value = Random.Range(0, 2);
+                    attack = true;
+                    Invoke("Timer", 1);
+                }
+                
+                if(value == 0)
+                {
+                    anim.SetBool("Attack1", true);
+                    anim.SetBool("Attack2", false);
+                }
+                if (value == 1)
+                {
+                    anim.SetBool("Attack2", true);
+                    anim.SetBool("Attack1", false);
+                }
+                anim.SetBool("Walking", false);
+            }
+
+            
+
+        }
 
         if(Vector2.Distance(playerVector, enemyVector) < chaseRange)
         {
@@ -69,5 +124,11 @@ public class Patrolling : MonoBehaviour
         //print(Vector2.Distance(playerVector, enemyVector));
 
     }
+
+    void Timer()
+    {
+        attack = false;
+    }
+
 
 }

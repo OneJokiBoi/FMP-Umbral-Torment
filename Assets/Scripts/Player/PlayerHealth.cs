@@ -2,50 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 10;
-    int currentHealth;
+    public int currentHealth;
+
 
     Animator anim;
-    GameObject player;
+    GameObject enemy;
 
-    bool isDead = false;
+    bool PlayerisDead = false;
 
-    void Start()
+    private void Start()
     {
         anim = GetComponent<Animator>();
         currentHealth = maxHealth;
-        
+
     }
+
     private void Update()
     {
-        if (currentHealth <= 0 && isDead == false)
+        if (currentHealth <= 0 && PlayerisDead == false)
         {
-            die();
-            isDead = true;
+            playerDie();
+            PlayerisDead = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-            gameObject.GetComponent<Patrolling> ().enabled = false;
+            gameObject.GetComponent<PlayerMovement>().enabled = false;
+
         }
     }
-    void die()
+    void playerDie()
     {
         anim.SetTrigger("Die");
     }
 
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Enemy")
         {
             currentHealth = 0;
-            
+           
         }
     }
 
-
-
 }
-   
-
