@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        currentHealth = 10;
+        currentHealth = maxHealth;
         
     }
     private void Update()
@@ -26,6 +26,7 @@ public class EnemyHealth : MonoBehaviour
             isDead = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+            gameObject .GetComponent<Patrolling> ().enabled = false;
         }
     }
     void die()
@@ -48,7 +49,7 @@ public class EnemyHealth : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             currentHealth = 0;
-            print("Collide with Player");
+            
         }
     }
 

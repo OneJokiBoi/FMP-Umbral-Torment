@@ -53,12 +53,6 @@ public class Patrolling : MonoBehaviour
             }
         }
 
-        if (chase)
-        {
-            //Follow the player
-            //Attack the player
-        }
-
         if(Vector2.Distance(playerVector, enemyVector) < chaseRange)
         {
             chase = true;
@@ -72,13 +66,8 @@ public class Patrolling : MonoBehaviour
         enemyVector = new Vector2(transform.position.x, transform.position.y);
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        print(Vector2.Distance(playerVector, enemyVector));
+        //print(Vector2.Distance(playerVector, enemyVector));
 
-    }
-
-    public void detectPlayer()
-    {
-        chase = true;
     }
 
 }
