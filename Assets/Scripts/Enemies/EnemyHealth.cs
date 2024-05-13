@@ -27,6 +27,7 @@ public class EnemyHealth : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
             gameObject.GetComponent<Patrolling> ().enabled = false;
+            gameObject.GetComponentInChildren<BoxCollider2D>().enabled = false;
         }
     }
     void die()
@@ -35,9 +36,9 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "PlayerHitBox")
         {
             currentHealth = 0;
             

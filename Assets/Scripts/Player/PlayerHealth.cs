@@ -7,8 +7,6 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 10;
     public int currentHealth;
-    public GameObject EnemyHitBox;
-
 
     Animator anim;
     
@@ -39,16 +37,16 @@ public class PlayerHealth : MonoBehaviour
         anim.SetTrigger("Die");
     }
 
+    
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == EnemyHitBox)
+        if(collision.gameObject.tag == "EnemyHitBox")
         {
-
             currentHealth = 0;
-           
+            Debug.Log("Hit player");
         }
     }
 
 }
+

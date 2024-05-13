@@ -37,10 +37,6 @@ public class PlayerCombat : MonoBehaviour
             Debug.Log("Hit");
         }
 
-
-
-
-
     }
 
     void stopAttack()
