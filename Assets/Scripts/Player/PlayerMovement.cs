@@ -22,9 +22,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        //WALKING
         anim.SetBool("Walking", rb.velocity.x != 0 && IsGrounded());
 
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        //DODGING
+        if (Input.GetKeyDown("left shift"))
+        {
+            Dodge();
+        }
 
         //JUMPING
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -71,6 +78,11 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = localScale;
 
         }
+    }
+
+    private void Dodge()
+    {
+        anim.SetBool("Dodge", true);
     }
 
 }

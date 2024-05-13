@@ -1,3 +1,4 @@
+using HutongGames.PlayMaker.Actions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,11 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 10;
     public int currentHealth;
+    public GameObject EnemyHitBox;
 
 
     Animator anim;
-    GameObject enemy;
+    
 
     bool PlayerisDead = false;
 
@@ -41,8 +43,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject == EnemyHitBox)
         {
+
             currentHealth = 0;
            
         }
