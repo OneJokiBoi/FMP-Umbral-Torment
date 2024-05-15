@@ -120,9 +120,7 @@ public class Patrolling : MonoBehaviour
         playerVector = new Vector2(player.transform.position.x, player.transform.position.y);
         enemyVector = new Vector2(transform.position.x, transform.position.y);
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        //print(Vector2.Distance(playerVector, enemyVector));
-
+  
     }
 
     void Timer()
