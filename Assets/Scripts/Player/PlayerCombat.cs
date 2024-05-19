@@ -18,29 +18,40 @@ public class PlayerCombat : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Attack();
+            
+            hitz();
+            
         }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            stopAttack();
-        }
+        //if (Input.GetMouseButtonUp(0))
+        //{
+        //    stopAttack();
+       // }
     }
 
-    void Attack()
+    /*void Attack()
     {
-        anim.SetBool("Attacking", true);
         Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, Enemy);
 
         foreach (Collider2D enemyGameobject in enemy)
         {
             Debug.Log("Hit");
         }
+       
 
-    }
+    }*/
 
     void stopAttack()
     {
-        anim.SetBool("Attacking", false);
+        //anim.SetTrigger("Attacking", false);
+ 
+    }
+
+    void hitz()
+    {
+        print("attacking");
+
+        anim.SetTrigger("Attacking");
+
     }
 }

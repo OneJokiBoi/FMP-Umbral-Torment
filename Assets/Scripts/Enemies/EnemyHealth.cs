@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public Attributes enemyAtm;
-    //public int maxHealth = 10;
-    //int currentHealth;
+    //public Attributes enemyAtm;
+    public int maxHealth = 10;
+    int currentHealth;
 
     Animator anim;
     GameObject player;
@@ -16,12 +16,12 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        //currentHealth = maxHealth;
-        enemyAtm = GetComponent<Attributes>();
+        currentHealth = maxHealth;
+        //enemyAtm = GetComponent<Attributes>();
     }
     private void Update()
     {
-        if (enemyAtm.health <= 0 && isDead == false)
+        if (currentHealth <= 0 && isDead == false)
         {
             die();
             isDead = true;
@@ -41,7 +41,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if(collision.gameObject.tag == "PlayerHitBox")
         {
-            enemyAtm.health = 0;
+            currentHealth = 0;
             
         }
     }
