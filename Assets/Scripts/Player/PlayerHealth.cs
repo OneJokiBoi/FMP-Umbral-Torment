@@ -35,6 +35,7 @@ public class PlayerHealth : MonoBehaviour
     void playerDie()
     {
         anim.SetTrigger("Die");
+        anim.SetBool("Dead", true);
     }
 
     

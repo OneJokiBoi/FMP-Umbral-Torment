@@ -29,6 +29,8 @@ public class Patrolling : MonoBehaviour
 
     Vector2 moveDir;
 
+    [SerializeField] BoxCollider2D col;
+
     private void Start()
     {
       anim = GetComponent<Animator>();
@@ -81,6 +83,8 @@ public class Patrolling : MonoBehaviour
                 anim.SetBool("Attack1", false);
                 anim.SetBool("Attack2", false);
                 anim.SetBool("Walking", true);
+                //gameObject.GetComponentInChildren<BoxCollider2D>().enabled = false;
+                col.enabled = false;
             }
             else
             {
@@ -102,6 +106,8 @@ public class Patrolling : MonoBehaviour
                     anim.SetBool("Attack1", false);
                 }
                 anim.SetBool("Walking", false);
+                //gameObject.GetComponentInChildren<BoxCollider2D>().enabled = true;
+                col.enabled = true;
             }
 
             

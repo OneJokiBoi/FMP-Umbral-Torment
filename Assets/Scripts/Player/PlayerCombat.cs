@@ -19,39 +19,16 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             
-            hitz();
-            
+            Attacking();   
         }
-
-        //if (Input.GetMouseButtonUp(0))
-        //{
-        //    stopAttack();
-       // }
     }
 
-    /*void Attack()
-    {
-        Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, Enemy);
-
-        foreach (Collider2D enemyGameobject in enemy)
-        {
-            Debug.Log("Hit");
-        }
-       
-
-    }*/
-
-    void stopAttack()
-    {
-        //anim.SetTrigger("Attacking", false);
  
-    }
-
-    void hitz()
+    void Attacking()
     {
         print("attacking");
 
-        anim.SetTrigger("Attacking");
+        anim.SetTrigger("AttackShort");
 
     }
 }

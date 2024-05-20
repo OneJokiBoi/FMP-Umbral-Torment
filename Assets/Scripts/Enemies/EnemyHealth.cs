@@ -11,6 +11,8 @@ public class EnemyHealth : MonoBehaviour
     Animator anim;
     GameObject player;
 
+    [SerializeField] BoxCollider2D col;
+
     bool isDead = false;
 
     void Start()
@@ -34,6 +36,8 @@ public class EnemyHealth : MonoBehaviour
     void die()
     {
         anim.SetTrigger("Die");
+        col.enabled = false;
+
     }
 
 
