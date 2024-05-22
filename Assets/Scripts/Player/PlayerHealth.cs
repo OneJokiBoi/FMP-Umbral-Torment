@@ -22,6 +22,20 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
+        /*if (currentHealth <= 0 && PlayerisDead == false)
+        {
+            playerDie();
+            PlayerisDead = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+            gameObject.GetComponent<PlayerMovement>().enabled = false;
+
+        }*/
+    }
+
+    public void takeDamage(int amount)
+    {
+        currentHealth -= amount;
         if (currentHealth <= 0 && PlayerisDead == false)
         {
             playerDie();
@@ -32,6 +46,8 @@ public class PlayerHealth : MonoBehaviour
 
         }
     }
+
+
     void playerDie()
     {
         anim.SetTrigger("Die");

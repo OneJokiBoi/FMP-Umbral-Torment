@@ -8,6 +8,8 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 10;
     int currentHealth;
 
+   
+
     Animator anim;
     GameObject player;
 
@@ -40,14 +42,19 @@ public class EnemyHealth : MonoBehaviour
 
     }
 
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "PlayerHitBox")
+        /*if(collision.gameObject.tag == "PlayerHitBox")
         {
             currentHealth = 0;
             
-        }
+        }*/
     }
 
 

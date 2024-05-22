@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] public SpriteRenderer spriteRender;
 
     Animator anim;
 
@@ -72,11 +73,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
+            //isFacingRight = !isFacingRight;
+            //Vector3 localScale = transform.localScale;
+            //localScale.x *= -1f;
+            //transform.localScale = localScale;
 
+            spriteRender.flipX = true;
+
+        }
+
+        if (!isFacingRight && horizontal < 0f || isFacingRight && horizontal > 0f)
+        {
+            spriteRender.flipX = false;
         }
     }
 
