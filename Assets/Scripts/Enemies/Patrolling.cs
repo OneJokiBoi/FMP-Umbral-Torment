@@ -12,6 +12,7 @@ public class Patrolling : MonoBehaviour
     Animator anim;
 
     private bool movingRight = true;
+    private bool beingAttacked = false;
 
     public Transform groundDetection;
     public Transform playerDetection;
@@ -127,6 +128,24 @@ public class Patrolling : MonoBehaviour
         enemyVector = new Vector2(transform.position.x, transform.position.y);
         player = GameObject.FindGameObjectWithTag("Player").transform;
   
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.name == "AttackPoint" && beingAttacked == false)
+        {
+            print("touching player");
+            beingAttacked = true;
+            Invoke("attackTimer", 0.5f);
+
+
+            //deal damage to enemy grab health variable and minus damage in this
+        }
+    }
+
+    void attackTimer()
+    {
+        beingAttacked = false;
     }
 
     void Timer()
