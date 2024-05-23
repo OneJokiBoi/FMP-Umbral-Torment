@@ -7,28 +7,23 @@ public class PlayerCombat : MonoBehaviour
 {
     Animator anim;
     public GameObject attackPoint;
+    public GameObject leftattackPoint;
     public float radius;
-    public LayerMask Enemy;
-    public int _swordDamage;
-    public float _swordRange;
-    public LayerMask mask;
-    public GameObject mP;
-    public GameObject lP;
-    public GameObject rP;
+    public int swordDamage;
 
     public bool isFacingLeft = false;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        leftattackPoint.SetActive(false);
     }
 
     void Update()
     {
 
         if (Input.GetMouseButtonDown(0))
-        {
-            
+        {  
             Attacking();   
         }
         if(TryGetComponent<SpriteRenderer>(out SpriteRenderer sprite))
@@ -36,10 +31,12 @@ public class PlayerCombat : MonoBehaviour
             if (sprite.flipX == true)
             {
                 isFacingLeft = true;
+                leftattackPoint.SetActive(true);
             }
             else
             {
                 isFacingLeft = false;
+                leftattackPoint.SetActive(false);
             }
             
         }
@@ -49,12 +46,14 @@ public class PlayerCombat : MonoBehaviour
     public void activateCollider()
     {
         attackPoint.GetComponent<BoxCollider2D>().enabled = true;
+        leftattackPoint.GetComponent<BoxCollider2D>().enabled = true;
         print("activating");
     }
 
     public void disableCollider()
     {
         attackPoint.GetComponent<BoxCollider2D>().enabled = false;
+        leftattackPoint.GetComponent<BoxCollider2D>().enabled = false;
         print("disabling");
     }
 
@@ -82,8 +81,8 @@ public class PlayerCombat : MonoBehaviour
             {
                 enemy.TakeDamage(_swordDamage);
 
-
             }
+
         }
         else if(isFacingLeft == true)
         {

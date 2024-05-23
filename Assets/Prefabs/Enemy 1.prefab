@@ -137,7 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b860d3556f12648876aa87fc499595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  enemyHealth: {fileID: 1053749529417418958}
+  damage: 5
   speed: 2.5
   distance: 5
   groundDetection: {fileID: 1053749530761191922}
@@ -225,6 +226,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  currentHealth: 0
+  fullHealth: {r: 1, g: 1, b: 1, a: 0}
+  halfHealth: {r: 0.6981132, g: 0.3457636, b: 0.3457636, a: 1}
+  lowHealth: {r: 0.31132078, g: 0.1042631, b: 0.1042631, a: 1}
+  sprite: {fileID: 1053749529417418964}
   col: {fileID: 1053749530432106471}
 --- !u!1 &1053749529749643307
 GameObject:

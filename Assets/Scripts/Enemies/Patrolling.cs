@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Patrolling : MonoBehaviour
 {
-    public int maxHealth = 10;
-    int currentHealth;
+    public EnemyHealth enemyHealth;
+
+    public int damage = 10;
+
     public float speed;
     public float distance;
 
@@ -70,23 +73,21 @@ public class Patrolling : MonoBehaviour
                 {
                     transform.eulerAngles = new Vector3(0, 0, 0);
                 }
-
             }
             else
             {
                 transform.eulerAngles = new Vector3(0, -180, 0);
             }
 
-            //if not next to player
             if (Vector2.Distance(playerVector, enemyVector) > attackRange)
             {
                 transform.Translate(Vector2.right * speed * Time.deltaTime);
                 anim.SetBool("Attack1", false);
                 anim.SetBool("Attack2", false);
                 anim.SetBool("Walking", true);
-                //gameObject.GetComponentInChildren<BoxCollider2D>().enabled = false;
                 col.enabled = false;
             }
+
             else
             {
                 if (!attack)
@@ -107,12 +108,9 @@ public class Patrolling : MonoBehaviour
                     anim.SetBool("Attack1", false);
                 }
                 anim.SetBool("Walking", false);
-                //gameObject.GetComponentInChildren<BoxCollider2D>().enabled = true;
                 col.enabled = true;
             }
-
             
-
         }
 
         if(Vector2.Distance(playerVector, enemyVector) < chaseRange)
@@ -137,9 +135,16 @@ public class Patrolling : MonoBehaviour
             print("touching player");
             beingAttacked = true;
             Invoke("attackTimer", 0.5f);
-
-
-            //deal damage to enemy grab health variable and minus damage in this
+            enemyHealth.TakeDamage(damage);
+            
+        }
+        else if(collision.gameObject.name == "leftattackPoint" && beingAttacked == false)
+        {
+            print("touching player");
+            beingAttacked = true;
+            Invoke("attackTimer", 0.5f);
+            enemyHealth.TakeDamage(damage);
+            
         }
     }
 

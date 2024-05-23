@@ -1,15 +1,19 @@
+using HutongGames.PlayMaker.Actions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    //public Attributes enemyAtm;
     public int maxHealth = 10;
-    int currentHealth;
+    public int currentHealth;
 
-   
+    public Color fullHealth;
+    public Color halfHealth = Color.red;
+    public Color lowHealth = Color.black;
 
+    public SpriteRenderer sprite;
+  
     Animator anim;
     GameObject player;
 
@@ -19,9 +23,12 @@ public class EnemyHealth : MonoBehaviour
 
     void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
+        fullHealth = sprite.color;
+
         anim = GetComponent<Animator>();
+
         currentHealth = maxHealth;
-        //enemyAtm = GetComponent<Attributes>();
     }
     private void Update()
     {
@@ -45,19 +52,18 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-    }
+        print("taking damage");
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        /*if(collision.gameObject.tag == "PlayerHitBox")
+        if(currentHealth <= 7)
         {
-            currentHealth = 0;
-            
-        }*/
-    }
+            sprite.color = halfHealth;
+        }
+        if (currentHealth <= 4)
+        {
+            sprite.color = lowHealth;
+        }
 
-
+    }   
 
 }
    
