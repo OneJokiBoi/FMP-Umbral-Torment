@@ -1,3 +1,4 @@
+using HutongGames.PlayMaker.Actions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -7,12 +8,11 @@ public class Patrolling : MonoBehaviour
 {
     public EnemyHealth enemyHealth;
 
-    public int damage = 10;
+    Animator anim;
 
+    //MOVEMENT
     public float speed;
     public float distance;
-
-    Animator anim;
 
     private bool movingRight = true;
     private bool beingAttacked = false;
@@ -21,12 +21,17 @@ public class Patrolling : MonoBehaviour
     public Transform playerDetection;
     public Transform player;
 
+    //ATTACKING
+    public int damage = 10;
     public bool chase = false;
-    bool attack = false;
 
+    bool attack = false;
     float chaseRange = 4f;
     float attackRange = 2f;
     float value;
+
+    public GameObject HitPoint;
+    public GameObject leftHitPoint;
 
     Vector2 playerVector;
     Vector2 enemyVector;
@@ -38,7 +43,10 @@ public class Patrolling : MonoBehaviour
     private void Start()
     {
       anim = GetComponent<Animator>();
+      HitPoint.SetActive(false);
+      leftHitPoint.SetActive(false);
     }
+
     private void Update()
     {
         if (!chase)
@@ -72,11 +80,16 @@ public class Patrolling : MonoBehaviour
                 if (playerInfo.collider.tag == "Player")
                 {
                     transform.eulerAngles = new Vector3(0, 0, 0);
+                    HitPoint.SetActive(true);
+                    leftHitPoint.SetActive(false);
                 }
             }
             else
             {
                 transform.eulerAngles = new Vector3(0, -180, 0);
+                leftHitPoint.SetActive(true);
+                HitPoint.SetActive(false);
+
             }
 
             if (Vector2.Distance(playerVector, enemyVector) > attackRange)
@@ -86,6 +99,8 @@ public class Patrolling : MonoBehaviour
                 anim.SetBool("Attack2", false);
                 anim.SetBool("Walking", true);
                 col.enabled = false;
+                HitPoint.SetActive(false);
+                leftHitPoint.SetActive(false);
             }
 
             else

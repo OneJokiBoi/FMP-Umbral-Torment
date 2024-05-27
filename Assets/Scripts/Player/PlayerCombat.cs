@@ -17,14 +17,16 @@ public class PlayerCombat : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         leftattackPoint.SetActive(false);
+        attackPoint.SetActive(false);
     }
 
     void Update()
     {
 
         if (Input.GetMouseButtonDown(0))
-        {  
-            Attacking();   
+        {
+            Attacking();
+            attackPoint.SetActive(true);
         }
         if(TryGetComponent<SpriteRenderer>(out SpriteRenderer sprite))
         {
@@ -32,11 +34,13 @@ public class PlayerCombat : MonoBehaviour
             {
                 isFacingLeft = true;
                 leftattackPoint.SetActive(true);
+                attackPoint.SetActive(false);
             }
             else
             {
                 isFacingLeft = false;
                 leftattackPoint.SetActive(false);
+                attackPoint.SetActive(true);
             }
             
         }
