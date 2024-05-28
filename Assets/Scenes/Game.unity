@@ -310,7 +310,7 @@ PrefabInstance:
     - target: {fileID: 1053749529417418966, guid: d7693c906330d054db77392631d4a6a6,
         type: 3}
       propertyPath: m_Name
-      value: Enemy 1 (1)
+      value: Enemy 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7693c906330d054db77392631d4a6a6, type: 3}
@@ -636,6 +636,12 @@ Transform:
   m_Father: {fileID: 2081656472}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &369915423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1053749530432106465, guid: d7693c906330d054db77392631d4a6a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 900769640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &442589245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,20 +1496,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1053749529417418965, guid: d7693c906330d054db77392631d4a6a6,
+    - target: {fileID: 1053749529417418964, guid: d7693c906330d054db77392631d4a6a6,
         type: 3}
-      propertyPath: damage
-      value: 3
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053749529417418964, guid: d7693c906330d054db77392631d4a6a6,
+        type: 3}
+      propertyPath: m_FlipY
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1053749529417418965, guid: d7693c906330d054db77392631d4a6a6,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1445858989}
+    - target: {fileID: 1053749529417418965, guid: d7693c906330d054db77392631d4a6a6,
+        type: 3}
+      propertyPath: HitPoint
+      value: 
+      objectReference: {fileID: 369915423}
+    - target: {fileID: 1053749529417418965, guid: d7693c906330d054db77392631d4a6a6,
+        type: 3}
+      propertyPath: leftHitPoint
+      value: 
+      objectReference: {fileID: 1123541875}
     - target: {fileID: 1053749529417418966, guid: d7693c906330d054db77392631d4a6a6,
         type: 3}
       propertyPath: m_Name
-      value: Enemy 1 (2)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7693c906330d054db77392631d4a6a6, type: 3}
@@ -1822,6 +1843,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1123541875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1123541876}
+  - component: {fileID: 1123541877}
+  m_Layer: 7
+  m_Name: LeftHitBox
+  m_TagString: EnemyHitBox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1123541876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123541875}
+  m_LocalRotation: {x: -0, y: -0, z: 0.42732552, w: 0.90409786}
+  m_LocalPosition: {x: 0.023, y: -0.369, z: 0}
+  m_LocalScale: {x: 0.76135, y: 0.76135, z: 0.76135}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 900769641}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 50.596}
+--- !u!61 &1123541877
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123541875}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.2043057, y: -0.26845464}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.09913781, y: 0.38384616}
+  m_EdgeRadius: 0
 --- !u!1 &1140213979
 GameObject:
   m_ObjectHideFlags: 0
@@ -3212,7 +3291,7 @@ PrefabInstance:
     - target: {fileID: 1053749529417418966, guid: d7693c906330d054db77392631d4a6a6,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy 1
       objectReference: {fileID: 0}
     - target: {fileID: 1053749529417418966, guid: d7693c906330d054db77392631d4a6a6,
         type: 3}
