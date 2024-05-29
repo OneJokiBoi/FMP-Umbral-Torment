@@ -31,7 +31,6 @@ public class Patrolling : MonoBehaviour
     float value;
 
     public GameObject HitPoint;
-    public GameObject leftHitPoint;
 
     Vector2 playerVector;
     Vector2 enemyVector;
@@ -44,7 +43,6 @@ public class Patrolling : MonoBehaviour
     {
       anim = GetComponent<Animator>();
       HitPoint.SetActive(false);
-      leftHitPoint.SetActive(false);
     }
 
     private void Update()
@@ -81,14 +79,12 @@ public class Patrolling : MonoBehaviour
                 {
                     transform.eulerAngles = new Vector3(0, 0, 0);
                     HitPoint.SetActive(true);
-                    leftHitPoint.SetActive(false);
                 }
             }
             else
             {
                 transform.eulerAngles = new Vector3(0, -180, 0);
-                leftHitPoint.SetActive(true);
-                HitPoint.SetActive(false);
+                HitPoint.SetActive(true);
 
             }
 
@@ -100,7 +96,6 @@ public class Patrolling : MonoBehaviour
                 anim.SetBool("Walking", true);
                 col.enabled = false;
                 HitPoint.SetActive(false);
-                leftHitPoint.SetActive(false);
             }
 
             else
@@ -153,13 +148,15 @@ public class Patrolling : MonoBehaviour
             enemyHealth.TakeDamage(damage);
             
         }
-        else if(collision.gameObject.name == "leftattackPoint" && beingAttacked == false)
+        else if(collision.gameObject.name == "leftAttackPoint" && beingAttacked == false)
         {
+
             print("touching player");
             beingAttacked = true;
             Invoke("attackTimer", 0.5f);
             enemyHealth.TakeDamage(damage);
-            
+
+
         }
     }
 
