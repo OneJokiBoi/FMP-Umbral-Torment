@@ -8,8 +8,7 @@ public class PlayerCombat : MonoBehaviour
     Animator anim;
     public GameObject attackPoint;
     public GameObject leftattackPoint;
-    public float radius;
-    public int swordDamage;
+    
 
     public bool isFacingLeft = false;
 

@@ -9,8 +9,10 @@ public class EnemyHealth : MonoBehaviour
     public int currentHealth;
 
     public Color fullHealth;
-    public Color halfHealth = Color.red;
-    public Color lowHealth = Color.black;
+    public Color halfHealth;
+    public Color lowHealth;
+
+    public bool ifBoss;
 
     public SpriteRenderer sprite;
   
@@ -51,6 +53,18 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if(ifBoss == true)
+        {
+            currentHealth -= damage;
+            if(currentHealth <= 30) 
+            { 
+                sprite.color = halfHealth;
+            }
+            if (currentHealth <= 10)
+            {
+                sprite.color = lowHealth;
+            }
+        }
         currentHealth -= damage;
         print("taking damage");
 

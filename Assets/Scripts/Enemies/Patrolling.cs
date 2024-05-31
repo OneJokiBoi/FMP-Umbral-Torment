@@ -22,12 +22,12 @@ public class Patrolling : MonoBehaviour
     public Transform player;
 
     //ATTACKING
-    public int damage = 10;
+    public int playerDamage = 10;
     public bool chase = false;
 
     bool attack = false;
-    float chaseRange = 4f;
-    float attackRange = 2f;
+    public float chaseRange = 4f;
+    public float attackRange = 2f;
     float value;
 
     public GameObject HitPoint;
@@ -145,16 +145,16 @@ public class Patrolling : MonoBehaviour
             print("touching player");
             beingAttacked = true;
             Invoke("attackTimer", 0.5f);
-            enemyHealth.TakeDamage(damage);
+            enemyHealth.TakeDamage(playerDamage);
             
         }
-        else if(collision.gameObject.name == "leftAttackPoint" && beingAttacked == false)
+        else if(collision.gameObject.name == "leftattackPoint" && beingAttacked == false)
         {
 
             print("touching player");
             beingAttacked = true;
             Invoke("attackTimer", 0.5f);
-            enemyHealth.TakeDamage(damage);
+            enemyHealth.TakeDamage(playerDamage);
 
 
         }

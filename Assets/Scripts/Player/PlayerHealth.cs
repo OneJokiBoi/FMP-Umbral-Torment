@@ -10,38 +10,46 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 10;
     public int currentHealth;
 
+    
+
+    EnemyHealth enemyHealth;
     public int enemyDamage = 10;
+   
 
     Animator anim;
 
     public bool PlayerisAttacked = false;
     bool PlayerisDead = false;
+    
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         currentHealth = maxHealth;
         startPos = transform.position;
+       
+        
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Checks for enemy hitbox layer
+
         if (collision.gameObject.layer == 10 && PlayerisAttacked == false)
         {
             print("player hit");
             PlayerisAttacked = true;
             playerTakeDamage(enemyDamage);
-
         }
+       
     }
-
-
 
     public void playerTakeDamage(int amount)
     {
+   
         currentHealth -= amount;
+       
+
         if (currentHealth <= 0 && PlayerisDead == false)
         {
             playerDie();
@@ -76,16 +84,5 @@ public class PlayerHealth : MonoBehaviour
         PlayerisAttacked = false;
     }
 
-    
-
-   /* private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "EnemyHitBox")
-        {
-            currentHealth = 0;
-            Debug.Log("Hit player");
-        }
-    }
-   */
 }
 

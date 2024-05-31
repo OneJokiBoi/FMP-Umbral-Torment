@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 8f;
+    public float speed = 8f;
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
+    public bool isMoving = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -16,22 +17,31 @@ public class PlayerMovement : MonoBehaviour
 
     Animator anim;
 
+    
+
     private void Start()
     {
         anim = GetComponent<Animator>();
+        
     }
 
     private void Update()
     {
         //WALKING
-        anim.SetBool("Walking", rb.velocity.x != 0 && IsGrounded());
+        anim.SetBool("Walking", isMoving);
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        //DODGING
-        if (Input.GetKeyDown("left shift"))
+       
+
+        if(rb.velocity.x > 1 || rb.velocity.x < -1 && IsGrounded())
         {
-            Dodge();
+            isMoving = true;
+
+        }
+        else
+        {
+            isMoving = false;
         }
 
         //JUMPING
@@ -73,13 +83,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
-            //isFacingRight = !isFacingRight;
-            //Vector3 localScale = transform.localScale;
-            //localScale.x *= -1f;
-            //transform.localScale = localScale;
-
             spriteRender.flipX = true;
-
         }
 
         if (!isFacingRight && horizontal < 0f || isFacingRight && horizontal > 0f)

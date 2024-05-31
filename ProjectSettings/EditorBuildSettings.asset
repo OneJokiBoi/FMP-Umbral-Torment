@@ -5,10 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Tiles.unity
+    guid: 66c9f04e92214af4eb6e8576245f2f19
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 6d9e6ef953cd1fe42b483a0a0c8fadb4
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Tiles.unity
-    guid: 66c9f04e92214af4eb6e8576245f2f19
+    path: Assets/Scenes/End Screen.unity
+    guid: c96a16d964ff51a409e87bd8d2e903c6
   m_configObjects: {}
