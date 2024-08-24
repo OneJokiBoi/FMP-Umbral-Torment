@@ -2,32 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class GameController : MonoBehaviour
 {
-    Vector2 startPos;
+    Vector2 checkpointPos;
     public PlayerHealth playerHealth;
 
     private void Start()
     {
-        startPos = transform.position;
+        checkpointPos = transform.position;
         
     }
 
-    /*private void Update()
-    {
-       if(playerHealth.currentHealth = 0)
-        {
-            Respawn()
-        }
-
-    }*/
-
     void Respawn()
     {
-        transform.position = startPos;
+        transform.position = checkpointPos;
     }
 
-
-
+    public void UpdateCheckpoint(Vector2 pos)
+    {
+        checkpointPos = pos;
+    }
 
 }
