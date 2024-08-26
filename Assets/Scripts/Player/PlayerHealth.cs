@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    Vector2 startPos;
+    public Vector2 startPos;
 
     public int maxHealth = 10;
     public int currentHealth;
@@ -39,10 +39,18 @@ public class PlayerHealth : MonoBehaviour
         {
             print("player hit");
             PlayerisAttacked = true;
+            Invoke("Reset", 0.2f);
             playerTakeDamage(enemyDamage);
         }
        
     }
+
+    public void Reset()
+    {
+        PlayerisAttacked= false;
+    }
+
+
 
     public void playerTakeDamage(int amount)
     {
@@ -71,7 +79,9 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator Respawn(float duration)
     {
+
         yield return new WaitForSeconds(duration);
+        currentHealth = maxHealth;
         transform.position = startPos;
         PlayerisDead = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = true;

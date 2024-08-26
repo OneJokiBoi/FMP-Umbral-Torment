@@ -1,3 +1,4 @@
+using HutongGames.PlayMaker.Actions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,9 @@ public class Checkpoint : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            gameController.UpdateCheckpoint(transform.position);
+            print("checkpoint hit");
+            //gameController.UpdateCheckpoint(transform.position);
+            GameObject.Find("Player").GetComponent<PlayerHealth>().startPos= collision.transform.position;
         }
     }
 

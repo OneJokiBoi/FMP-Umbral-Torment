@@ -8,6 +8,8 @@ TagManager:
   - EnemyHitBox
   - PlayerHitBox
   - Checkpoint
+  - Weakpoint
+  - Slime
   layers:
   - Default
   - TransparentFX
